@@ -4,15 +4,18 @@ block content
   a(href="/") Home
   h1= title
   h2 Welcome to #{title}
-  p Sell Img1 by TestUser
+  p #{image.name} by TestUser
   img(src="/images/img1.jpg", alt="img", class="sell-image")
-  p Set Price ($)
-    input(type="number")
-  P Reduce Inventory By
-    input(type="number")
-  P Increase Inventory By
-    input(type="number")
   p Current Price:$ #{image.price/1000} 
   p Current Quantity: #{image.quantity}
-  button Save
+  form(action=`/images/${image.id}/manage` method="post")
+    p Set Price ($): 
+      input(type="number " name="price" min="1" reuired)
+    P Set Inventory: 
+      input(type="number" name="quantity"  min="1" required)
+    input(type="hidden" class="hidden" name="action" value="1")
+    button Save
+  form(action=`/images/${image.id}/manage` method="post")
+    input(type="hidden" class="hidden" name="action" value="2")
+    button Delete Image
   p Details saved successfully

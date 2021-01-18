@@ -64,13 +64,29 @@ ImageService.buyImage = async (id, quantity) => {
   });
 };
 
-ImageService.sellImage = async (id, quantity, price) => {
-  console.log(id, quantity, price);
+ImageService.updateInventory = async (id, quantity, price) => {
   const sql = `UPDATE images set
            quantity = COALESCE(?,quantity),
            price = COALESCE(?,price)
            WHERE id = ?`;
   const params = [quantity, price, id];
+  return new Promise((resolve, reject) => {
+    db.run(sql, params, (err, row) => {
+      if (err) {
+        reject({ message: `Something went wrong ${err}`, code: 500, data: [] });
+      }
+      resolve({
+        message: "success",
+        code: 200,
+        data: row,
+      });
+    });
+  });
+};
+
+ImageService.deleteImage = async (id) => {
+  const sql = `DELETE FROM images WHERE id = ?`;
+  const params = [id];
   return new Promise((resolve, reject) => {
     db.run(sql, params, (err, row) => {
       if (err) {

@@ -35,11 +35,34 @@ ImageController.sellImage = async (id, quantity, price) => {
   //convert price to pennies
   price = price * 1000;
   try {
-    const res = await imageService.sellImage(id, quantity, price);
+    const res = await imageService.updateInventory(id, quantity, price);
     return res;
   } catch (error) {
     console.log("Something went wrong", error);
     return error;
+  }
+};
+
+ImageController.manageImage = async (id, quantity, price, updateOrDelete) => {
+  if (updateOrDelete === 1) {
+    // we are updating the inventory
+    //convert price to pennies
+    price = price * 1000;
+    try {
+      const res = await imageService.updateInventory(id, quantity, price);
+      return res;
+    } catch (error) {
+      console.log("Something went wrong", error);
+      return error;
+    }
+  } else if (updateOrDelete === 2) {
+    try {
+      const res = await imageService.deleteImage(id);
+      return res;
+    } catch (error) {
+      console.log("Something went wrong", error);
+      return error;
+    }
   }
 };
 

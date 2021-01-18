@@ -46,3 +46,7 @@ button {
   width: 700px;
   height: auto;
 }
+
+.hidden{
+  display: none;
+}
