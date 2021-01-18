@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  h2 Welcome to #{title}
+  p Buy Img1 by TestUser
+  img(src="/images/img1.jpg", alt="img", class="sell-image")
+  p How many 
+    input(type="number")
+  button Buy
+  p Thanks for buying

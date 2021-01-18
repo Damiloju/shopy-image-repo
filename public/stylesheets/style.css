@@ -1,0 +1,48 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  color: rgb(25, 92, 25);
+}
+
+.image-container img {
+  width: 400px;
+  height: 250px;
+}
+
+.images-container{
+  width: 90%;
+  margin: auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-container {
+  width: 400px;
+  height: 250px;
+  margin-left: 2em;
+  margin-bottom: 2em;
+}
+
+.image-container button {
+  width: 100px;
+  height: 50;
+  margin: 10px;
+  
+}
+
+button {
+  cursor: pointer;
+}
+
+.sell-image{
+  width: 700px;
+  height: auto;
+}

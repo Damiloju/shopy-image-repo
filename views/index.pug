@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  h2 Welcome to #{title}
+  div(class="images-container")
+    each image in images
+      div(class="image-container")
+        img(src=`/images/${image}`, alt="Image")
+        span()
+          p Quantity up for sell :10
+          p Price:$10
+          button
+            a(href=`${image.split(".")[0]}/buy`) Buy
+          button
+            a(href=`${image.split(".")[0]}/sell`) Sell
+          button 
+            a(href=`${image.split(".")[0]}/manage`) Manage

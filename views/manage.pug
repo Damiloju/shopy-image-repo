@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  h2 Welcome to #{title}
+  p Sell Img1 by TestUser
+  img(src="/images/img1.jpg", alt="img", class="sell-image")
+  p Set Price ($)
+    input(type="number")
+  P Reduce Inventory By
+    input(type="number")
+  P Increase Inventory By
+    input(type="number")
+  button Save
+  p Details saved successfully
