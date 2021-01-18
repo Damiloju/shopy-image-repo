@@ -24,6 +24,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
           // Table just created, creating some rows
           var insert =
             "INSERT INTO images (name, path, quantity,price) VALUES (?,?,?,?)";
+          // Prices are saved in pennies to help better handle money
           db.run(insert, ["Building", "images/img1.jpg", 10, 35000]);
           db.run(insert, ["Airbuds", "images/img2.jpg", 10, 45000]);
           db.run(insert, ["Airpods", "images/img3.jpg", 10, 56000]);

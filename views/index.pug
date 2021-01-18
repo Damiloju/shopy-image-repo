@@ -9,7 +9,8 @@ block content
         img(src=`${image.path}`, alt="Image")
         span()
           p Quantity up for sell : #{image.quantity}
-          p Price:$10
+          // convert pennies to dollars
+          p Price:$ #{image.price/1000} 
           button
             a(href=`images/${image.id}/buy`) Buy
           button

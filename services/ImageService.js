@@ -3,6 +3,7 @@ const db = require("../database.js");
 const ImageService = {};
 
 ImageService.fetchAllImages = () => {
+  // Fetch all images from db and wrap the funtion around the promise api becuase sqlite3 does not provide native support for it
   return new Promise((resolve, reject) => {
     const sql = "select * from images";
 
