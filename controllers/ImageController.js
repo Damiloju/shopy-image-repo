@@ -21,4 +21,14 @@ ImageController.getImage = async (id) => {
   }
 };
 
+ImageController.buyImage = async (id, quantity) => {
+  try {
+    const res = await imageService.buyImage(id, quantity);
+    return res;
+  } catch (error) {
+    console.log("Something went wrong", error);
+    return error;
+  }
+};
+
 module.exports = ImageController;

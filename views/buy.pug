@@ -6,9 +6,11 @@ block content
   h2 Welcome to #{title}
   p Buy Img1 by TestUser
   img(src=`/${image.path}`, alt="img", class="sell-image")
-  p How many 
-    input(type="number")
   p Price Price:$ #{image.price/1000} 
   p Quantity that can be bought: #{image.quantity}
-  button Buy
+ 
+  form(action=`/images/${image.id}/buy` method="post")
+    p How many 
+      input(type="number" name="quantity" max=`${image.quantity}` min="0" required)
+    button Buy
   p Thanks for buying
