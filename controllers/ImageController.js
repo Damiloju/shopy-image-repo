@@ -6,7 +6,8 @@ ImageController.getAllImages = async () => {
     const res = await imageService.fetchAllImages();
     return res;
   } catch (error) {
-    console.log("Something went wrong");
+    console.log("Something went wrong", error);
+    return error;
   }
 };
 
