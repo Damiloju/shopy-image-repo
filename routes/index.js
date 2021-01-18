@@ -1,17 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
+const ImageController = require("../controllers/ImageController");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  const testFolder = "public/images/";
-  const images = [];
+router.get("/", async (req, res, next) => {
+  images = await ImageController.getAllImages();
 
-  fs.readdirSync(testFolder).forEach((file) => {
-    images.push(file);
-  });
-
-  res.render("index", { title: "Shopify Image Repo", images: images });
+  res.render("index", { title: "Shopify Image Repo", images: images.data });
 });
 
 /* GET home page. */
