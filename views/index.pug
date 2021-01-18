@@ -6,13 +6,13 @@ block content
   div(class="images-container")
     each image in images
       div(class="image-container")
-        img(src=`/images/${image}`, alt="Image")
+        img(src=`${image.path}`, alt="Image")
         span()
-          p Quantity up for sell :10
+          p Quantity up for sell : #{image.quantity}
           p Price:$10
           button
-            a(href=`${image.split(".")[0]}/buy`) Buy
+            a(href=`images/${image.id}/buy`) Buy
           button
-            a(href=`${image.split(".")[0]}/sell`) Sell
+            a(href=`images/${image.id}/sell`) Sell
           button 
-            a(href=`${image.split(".")[0]}/manage`) Manage
+            a(href=`images/${image.id}/manage`) Manage

@@ -5,7 +5,6 @@ const ImageController = require("../controllers/ImageController");
 /* GET home page. */
 router.get("/", async (req, res, next) => {
   images = await ImageController.getAllImages();
-
   res.render("index", { title: "Shopify Image Repo", images: images.data });
 });
 

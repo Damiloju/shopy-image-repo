@@ -2,32 +2,23 @@ const db = require("../database.js");
 
 const ImageService = {};
 
-ImageService.fetchAllImages = function () {
-  const sql = "select * from images";
+ImageService.fetchAllImages = () => {
+  return new Promise((resolve, reject) => {
+    const sql = "select * from images";
 
-  const params = [];
+    const params = [];
 
-  const data = [];
-
-  try {
     db.all(sql, params, (err, rows) => {
       if (err) {
-        throw err;
+        reject({ message: `Something went wrong ${err}`, code: 500, data: [] });
       }
-
-      rows.forEach((row) => {
-        data.push(row);
+      resolve({
+        message: "success",
+        code: 200,
+        data: rows,
       });
     });
-
-    return {
-      message: "success",
-      code: 200,
-      data: data,
-    };
-  } catch (error) {
-    return { message: `Something went wrong ${err}`, code: 500, data: [] };
-  }
+  });
 };
 
 ImageService.fetchImage = (id) => {
