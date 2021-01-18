@@ -31,4 +31,16 @@ ImageController.buyImage = async (id, quantity) => {
   }
 };
 
+ImageController.sellImage = async (id, quantity, price) => {
+  //convert price to pennies
+  price = price * 1000;
+  try {
+    const res = await imageService.sellImage(id, quantity, price);
+    return res;
+  } catch (error) {
+    console.log("Something went wrong", error);
+    return error;
+  }
+};
+
 module.exports = ImageController;

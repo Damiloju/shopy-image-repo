@@ -7,13 +7,15 @@ block content
   p Sell Img1 by TestUser
   img(src="/images/img1.jpg", alt="img", class="sell-image")
   p Quantity that can be sold: unlimited 
+  p Current Price:$ #{image.price/1000} 
+  p Current Quantity: #{image.quantity} 
+
   form(action=`/images/${image.id}/sell` method="post")
     p How many: 
       input(type="number" name="quantity"  min="1")
     p Price in dollars: 
       input(type="number " name="price" min="1" )
-    p Price Price:$ #{image.price/1000} 
+    button Sell
     // We assume the User is restocking and just update the price and quantity of the image for selling
-  
-  button Sell
+
   p Image put up for sale

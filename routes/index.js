@@ -34,4 +34,13 @@ router.post("/images/:id/buy", async (req, res, next) => {
   res.redirect("/");
 });
 
+router.post("/images/:id/sell", async (req, res, next) => {
+  images = await ImageController.sellImage(
+    req.params.id,
+    req.body.quantity,
+    req.body.price
+  );
+  res.redirect("/");
+});
+
 module.exports = router;
