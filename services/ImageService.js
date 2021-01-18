@@ -25,15 +25,17 @@ ImageService.fetchAllImages = () => {
 ImageService.fetchImage = (id) => {
   const sql = `select * from images where id = ?`;
   const params = [id];
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      return { message: `Something went wrong ${err}`, code: 500, data: [] };
-    }
-    return {
-      message: "success",
-      code: 200,
-      data: rows,
-    };
+  return new Promise((resolve, reject) => {
+    db.get(sql, params, (err, row) => {
+      if (err) {
+        reject({ message: `Something went wrong ${err}`, code: 500, data: [] });
+      }
+      resolve({
+        message: "success",
+        code: 200,
+        data: row,
+      });
+    });
   });
 };
 

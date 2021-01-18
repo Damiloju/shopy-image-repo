@@ -10,18 +10,23 @@ router.get("/", async (req, res, next) => {
 });
 
 /* GET home page. */
-router.get("/img1/buy", function (req, res, next) {
-  res.render("buy", { title: "Shopify Image Repo" });
+router.get("/images/:id/buy", async (req, res, next) => {
+  image = await ImageController.getImage(req.params.id);
+  res.render("buy", { title: "Shopify Image Repo", image: image.data });
 });
 
 /* GET home page. */
-router.get("/img1/sell", function (req, res, next) {
-  res.render("sell", { title: "Shopify Image Repo" });
+router.get("/images/:id/sell", async (req, res, next) => {
+  image = await ImageController.getImage(req.params.id);
+
+  res.render("sell", { title: "Shopify Image Repo", image: image.data });
 });
 
 /* GET home page. */
-router.get("/img1/manage", function (req, res, next) {
-  res.render("manage", { title: "Shopify Image Repo" });
+router.get("/images/:id/manage", async (req, res, next) => {
+  image = await ImageController.getImage(req.params.id);
+
+  res.render("manage", { title: "Shopify Image Repo", image: image.data });
 });
 
 module.exports = router;

@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  a(href="/") Home
   h1= title
   h2 Welcome to #{title}
   p Sell Img1 by TestUser
@@ -11,5 +12,7 @@ block content
     input(type="number")
   P Increase Inventory By
     input(type="number")
+  p Current Price:$ #{image.price/1000} 
+  p Current Quantity: #{image.quantity}
   button Save
   p Details saved successfully

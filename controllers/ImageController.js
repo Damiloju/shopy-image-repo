@@ -11,9 +11,14 @@ ImageController.getAllImages = async () => {
   }
 };
 
-ImageController.getImage = (id) => {
-  const res = imageService.fetchImage(id);
-  return res;
+ImageController.getImage = async (id) => {
+  try {
+    const res = await imageService.fetchImage(id);
+    return res;
+  } catch (error) {
+    console.log("Something went wrong", error);
+    return error;
+  }
 };
 
 module.exports = ImageController;

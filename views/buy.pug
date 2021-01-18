@@ -1,11 +1,14 @@
 extends layout
 
 block content
+  a(href="/") Home
   h1= title
   h2 Welcome to #{title}
   p Buy Img1 by TestUser
-  img(src="/images/img1.jpg", alt="img", class="sell-image")
+  img(src=`/${image.path}`, alt="img", class="sell-image")
   p How many 
     input(type="number")
+  p Price Price:$ #{image.price/1000} 
+  p Quantity that can be bought: #{image.quantity}
   button Buy
   p Thanks for buying
