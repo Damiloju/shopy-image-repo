@@ -31,7 +31,10 @@ router.get("/images/:id/manage", async (req, res, next) => {
 
 router.post("/images/:id/buy", async (req, res, next) => {
   images = await ImageController.buyImage(req.params.id, req.body.quantity);
-  res.redirect("/");
+  res.render("feedback", {
+    title: "Shopify Image Repo",
+    message: "Thanks for buying, purchase successful",
+  });
 });
 
 router.post("/images/:id/sell", async (req, res, next) => {
@@ -40,7 +43,10 @@ router.post("/images/:id/sell", async (req, res, next) => {
     req.body.quantity,
     req.body.price
   );
-  res.redirect("/");
+  res.render("feedback", {
+    title: "Shopify Image Repo",
+    message: "Image has been put up for sale",
+  });
 });
 
 router.post("/images/:id/manage", async (req, res, next) => {
@@ -50,7 +56,21 @@ router.post("/images/:id/manage", async (req, res, next) => {
     req.body.price,
     Number(req.body.action)
   );
-  res.redirect("/");
+  if (Number(req.body.action) === 2) {
+    res.render("feedback", {
+      title: "Shopify Image Repo",
+      message: "Image deleted from inventory successfully",
+    });
+
+    res.redirect(
+      "<a href='home'>Homw</a> <p>Image deleted from inventory successfully</p>"
+    );
+  } else if (Number(req.body.action) === 1) {
+    res.render("feedback", {
+      title: "Shopify Image Repo",
+      message: "Inventory updated successfully",
+    });
+  }
 });
 
 module.exports = router;
